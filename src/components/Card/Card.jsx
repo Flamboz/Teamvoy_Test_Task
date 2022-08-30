@@ -3,7 +3,6 @@ import styles from './Card.module.css';
 
 const Card = ({ singlePokemonData }) => {
   const [pokemonData, setPokemonData] = useState(null);
-  // const [typeColor, setTypeColor] = useState('');
 
   useEffect(() => {
     async function loadData() {
