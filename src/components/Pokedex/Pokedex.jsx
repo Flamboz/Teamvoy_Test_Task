@@ -8,12 +8,15 @@ const Pokedex = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [desiredTypeToFilter, setDesiredTypeToFilter] = useState('');
   const [chunks, setChunks] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function loadData() {
+      setIsLoading(true);
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${12 * chunks}`);
       const data = await res.json();
       setPokemonsData(data.results);
+      setIsLoading(false);
     }
 
     loadData();
@@ -43,7 +46,7 @@ const Pokedex = () => {
             setSelectedCard={setSelectedCard}
             desiredTypeToFilter={desiredTypeToFilter}
           />
-          <button onClick={loadMore} className={styles.button} type="button">Load More</button>
+          <button onClick={loadMore} className={styles.button} type="button">{isLoading ? 'Loading...' : 'Load More'}</button>
         </div>
         {selectedCard && <CardInfo selectedCard={selectedCard} />}
       </div>
