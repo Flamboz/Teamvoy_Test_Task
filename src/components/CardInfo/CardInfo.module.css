@@ -1,7 +1,6 @@
 .cardInfo {
   position: sticky;
   width: 30%;
-  max-height: 100vh;
   align-self: start;
   top: 10px;
   padding: 10px;
