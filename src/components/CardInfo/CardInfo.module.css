@@ -1,8 +1,10 @@
 .cardInfo {
-  position: absolute;
+  position: sticky;
   width: 30%;
-  top: 15px;
-  right: 5%;
+  max-height: 100vh;
+  align-self: start;
+  top: 10px;
+  margin-top: 15px;
   padding: 10px;
   border: 1px solid #000;
   text-align: center;

@@ -36,7 +36,7 @@ const CardInfo = ({ selectedCard }) => {
             <td className={styles.capitalize}>{typesArr.join(', ')}</td>
           </tr>
           {selectedCard.stats.map((item) => (
-            <tr>
+            <tr key={item.stat.name}>
               <td className={styles.capitalize}>{item.stat.name}</td>
               <td>{item.base_stat}</td>
             </tr>

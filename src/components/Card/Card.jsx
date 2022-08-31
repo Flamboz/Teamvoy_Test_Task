@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Card.module.css';
 
-const Card = ({ singlePokemonData, setSelectedCard }) => {
+const Card = ({ singlePokemonData, setSelectedCard, desiredTypeToFilter }) => {
   const [pokemonData, setPokemonData] = useState(null);
 
   useEffect(() => {
@@ -27,29 +27,36 @@ const Card = ({ singlePokemonData, setSelectedCard }) => {
     return typeColor[type] || defaultColor;
   };
 
-  return pokemonData && (
-  <li className={styles.card}>
-    <button type="button" className={styles.button} onClick={() => setSelectedCard(pokemonData)}>
-      <img
-        className={styles.img}
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
-        alt={pokemonData.name}
-      />
-      <p className={styles.name}>{pokemonData.name}</p>
-      <ul className={styles.typesList}>
-        {pokemonData.types.map((type) => (
-          <li
-            key={type.slot}
-            className={styles.type}
-            style={{ backgroundColor: pokemonTypeToColor(type.type.name) }}
-          >
-            {type.type.name}
+  const showCard = pokemonData
+  && pokemonData.types.some((item) => item.type.name.includes(desiredTypeToFilter));
 
-          </li>
-        ))}
-      </ul>
-    </button>
-  </li>
+  if (!showCard) {
+    return null;
+  }
+
+  return (
+    <li className={styles.card}>
+      <button type="button" className={styles.button} onClick={() => setSelectedCard(pokemonData)}>
+        <img
+          className={styles.img}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
+          alt={pokemonData.name}
+        />
+        <p className={styles.name}>{pokemonData.name}</p>
+        <ul className={styles.typesList}>
+          {pokemonData.types.map((type) => (
+            <li
+              key={type.slot}
+              className={styles.type}
+              style={{ backgroundColor: pokemonTypeToColor(type.type.name) }}
+            >
+              {type.type.name}
+
+            </li>
+          ))}
+        </ul>
+      </button>
+    </li>
   );
 };
 

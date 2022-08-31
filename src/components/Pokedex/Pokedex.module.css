@@ -8,6 +8,47 @@
   margin: 0 auto 15px;
 }
 
+.label {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.labelText {
+  flex-shrink: 0;
+}
+
+.input {
+  width: 100%;
+  margin-left: 10px;
+  padding: 5px;
+}
+
 .wrapper {
   position: relative;
+  display: flex;
+  gap: 10%;
+}
+
+.width50percent {
+  width: 50%;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  border: 1px solid rgb(78,127,168);
+  border-radius: 10px;
+  background-color: rgb(0,140,255);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(0, 106, 193);
 }

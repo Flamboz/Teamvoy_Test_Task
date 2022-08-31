@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px 0;
   border: 1px solid #000;
   transition: 0.3s ease;
 }
