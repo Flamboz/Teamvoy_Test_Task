@@ -1,5 +1,4 @@
 .card {
-  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,17 +48,4 @@
 
 .name, .type {
   text-transform: capitalize;
-}
-
-
-@media (max-width: 768px) {
-  .card {
-    width: 48%;
-  }
-}
-
-@media (max-width: 500px) {
-  .card {
-    width: 100%;
-  }
 }
