@@ -7,3 +7,7 @@
   border: 1px solid #000;
   margin: 0 auto 15px;
 }
+
+.wrapper {
+  position: relative;
+}

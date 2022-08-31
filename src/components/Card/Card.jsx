@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Card.module.css';
 
-const Card = ({ singlePokemonData }) => {
+const Card = ({ singlePokemonData, setSelectedCard }) => {
   const [pokemonData, setPokemonData] = useState(null);
 
   useEffect(() => {
@@ -27,28 +27,28 @@ const Card = ({ singlePokemonData }) => {
     return typeColor[type] || defaultColor;
   };
 
-  const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
   return pokemonData && (
   <li className={styles.card}>
-    <img
-      className={styles.img}
-      src="https://via.placeholder.com/150"
-      alt={pokemonData.name}
-    />
-    <p className={styles.name}>{capitalizeFirstLetter(pokemonData.name)}</p>
-    <ul className={styles.typesList}>
-      {pokemonData.types.map((type) => (
-        <li
-          key={type.slot}
-          className={styles.type}
-          style={{ backgroundColor: pokemonTypeToColor(type.type.name) }}
-        >
-          {capitalizeFirstLetter(type.type.name)}
+    <button type="button" className={styles.button} onClick={() => setSelectedCard(pokemonData)}>
+      <img
+        className={styles.img}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
+        alt={pokemonData.name}
+      />
+      <p className={styles.name}>{pokemonData.name}</p>
+      <ul className={styles.typesList}>
+        {pokemonData.types.map((type) => (
+          <li
+            key={type.slot}
+            className={styles.type}
+            style={{ backgroundColor: pokemonTypeToColor(type.type.name) }}
+          >
+            {type.type.name}
 
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+    </button>
   </li>
   );
 };
