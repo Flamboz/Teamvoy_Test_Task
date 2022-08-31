@@ -1,44 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import useFetchAllPokemons from '../../hooks/useFetchAllPokemons';
 import CardInfo from '../CardInfo/CardInfo';
 import CardsGallery from '../CardsGallery/CardsGallery';
+import FilterInput from './FilterInput/FilterInput';
 import styles from './Pokedex.module.css';
 
 const Pokedex = () => {
-  const [pokemonsData, setPokemonsData] = useState([]);
+  const { pokemonsData, isLoading, loadMore } = useFetchAllPokemons();
+
   const [selectedCard, setSelectedCard] = useState(null);
   const [filter, setFilter] = useState('');
-  const [chunks, setChunks] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    async function loadData() {
-      setIsLoading(true);
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${12 * chunks}`);
-      const data = await res.json();
-      setPokemonsData(data.results);
-      setIsLoading(false);
-    }
-
-    loadData();
-  }, [chunks]);
-
-  const loadMore = () => {
-    setChunks(chunks + 1);
-  };
+  const buttonText = isLoading ? 'Loading...' : 'Load More';
 
   return (
     <section>
       <h1 className={styles.title}>Pokedex</h1>
-      <label htmlFor="filterInput" className={styles.label}>
-        <span className={styles.labelText}>Filter by type</span>
-        <input
-          className={styles.input}
-          type="text"
-          name="filterInput"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-        />
-      </label>
+      <FilterInput filter={filter} setFilter={setFilter} />
       <div className={styles.wrapper}>
         <div className={styles.width50percent}>
           <CardsGallery
@@ -46,7 +23,7 @@ const Pokedex = () => {
             setSelectedCard={setSelectedCard}
             filter={filter}
           />
-          <button onClick={loadMore} className={styles.button} type="button">{isLoading ? 'Loading...' : 'Load More'}</button>
+          <button onClick={loadMore} className={styles.button} type="button">{buttonText}</button>
         </div>
         {selectedCard && <CardInfo selectedCard={selectedCard} />}
       </div>
