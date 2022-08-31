@@ -10,6 +10,7 @@ const Pokedex = () => {
 
   const [selectedCard, setSelectedCard] = useState(null);
   const [filter, setFilter] = useState('');
+  const showLoadMoreButton = !filter;
   const buttonText = isLoading ? 'Loading...' : 'Load More';
 
   return (
@@ -23,7 +24,7 @@ const Pokedex = () => {
             setSelectedCard={setSelectedCard}
             filter={filter}
           />
-          <button onClick={loadMore} className={styles.button} type="button">{buttonText}</button>
+          {showLoadMoreButton && <button onClick={loadMore} className={styles.button} type="button">{buttonText}</button>}
         </div>
         {selectedCard && <CardInfo selectedCard={selectedCard} />}
       </div>
