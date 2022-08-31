@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.46215dac.css",
-    "main.js": "/static/js/main.00739cad.js",
-    "index.html": "/index.html",
-    "main.46215dac.css.map": "/static/css/main.46215dac.css.map",
-    "main.00739cad.js.map": "/static/js/main.00739cad.js.map"
+    "main.css": "/Teamvoy_Test_Task/static/css/main.46215dac.css",
+    "main.js": "/Teamvoy_Test_Task/static/js/main.00739cad.js",
+    "index.html": "/Teamvoy_Test_Task/index.html",
+    "main.46215dac.css.map": "/Teamvoy_Test_Task/static/css/main.46215dac.css.map",
+    "main.00739cad.js.map": "/Teamvoy_Test_Task/static/js/main.00739cad.js.map"
   },
   "entrypoints": [
     "static/css/main.46215dac.css",
