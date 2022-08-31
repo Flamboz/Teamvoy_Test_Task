@@ -2,14 +2,14 @@ import React from 'react';
 import Card from '../Card/Card';
 import styles from './CardsGallery.module.css';
 
-const CardsGallery = ({ pokemonsData, setSelectedCard, desiredTypeToFilter }) => (
+const CardsGallery = ({ pokemonsData, setSelectedCard, filter }) => (
   <ul className={styles.gallery}>
     {pokemonsData.map((pokemon) => (
       <Card
         key={pokemon.name}
-        singlePokemonData={pokemon}
+        url={pokemon.url}
         setSelectedCard={setSelectedCard}
-        desiredTypeToFilter={desiredTypeToFilter}
+        filter={filter}
       />
     ))}
   </ul>

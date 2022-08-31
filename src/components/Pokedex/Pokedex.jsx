@@ -6,7 +6,7 @@ import styles from './Pokedex.module.css';
 const Pokedex = () => {
   const [pokemonsData, setPokemonsData] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [desiredTypeToFilter, setDesiredTypeToFilter] = useState('');
+  const [filter, setFilter] = useState('');
   const [chunks, setChunks] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,8 +35,8 @@ const Pokedex = () => {
           className={styles.input}
           type="text"
           name="filterInput"
-          value={desiredTypeToFilter}
-          onChange={(e) => setDesiredTypeToFilter(e.target.value)}
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
         />
       </label>
       <div className={styles.wrapper}>
@@ -44,7 +44,7 @@ const Pokedex = () => {
           <CardsGallery
             pokemonsData={pokemonsData}
             setSelectedCard={setSelectedCard}
-            desiredTypeToFilter={desiredTypeToFilter}
+            filter={filter}
           />
           <button onClick={loadMore} className={styles.button} type="button">{isLoading ? 'Loading...' : 'Load More'}</button>
         </div>
