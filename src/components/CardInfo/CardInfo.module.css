@@ -39,3 +39,22 @@
 .table tr > td {
   width: 70%;
 }
+
+
+@media (max-width: 768px) {
+  .cardInfo {
+    width: 34%;
+  }
+}
+
+@media (max-width: 576px) {
+  .cardInfo {
+    width: 40%;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardInfo {
+    width: 50%;
+  }
+}

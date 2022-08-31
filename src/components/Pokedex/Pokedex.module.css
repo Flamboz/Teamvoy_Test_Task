@@ -1,5 +1,5 @@
 .title {
-  width: 400px;
+  max-width: 400px;
   padding: 8px;
   font-size: 36px;
   font-weight: 500;
@@ -51,4 +51,26 @@
 
 .button:hover {
   background-color: rgb(0, 106, 193);
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    gap: 8%;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrapper {
+    gap: 5%;
+  }
+
+  .label {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    gap: 3%;
+  }
 }
